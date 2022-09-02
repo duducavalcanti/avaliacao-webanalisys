@@ -13,4 +13,34 @@ class UsuarioController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
+    public function filtarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function cadastrarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function salvarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function editarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function deletarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function confirmarAction()
+    {
+        return new ViewModel();
+    }
 }
