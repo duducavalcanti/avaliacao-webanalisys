@@ -21,7 +21,7 @@
                                 'href' => $this->basePath() . '/img/favicon.ico'
                             ])
             ->prependStylesheet($this->basePath('css/style.css'))
-            ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap/bootstrap.min.css'))
 ?>
 
         <!-- Scripts -->
@@ -66,17 +66,35 @@
             <?= $this->content ?>
             <hr>
             <footer>
-                <p>
-                    <?php 
-                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-                    date_default_timezone_set('America/Sao_Paulo');
-                    echo strftime('%A, %d de %B de %Y', strtotime('today'));
-                    ?>
-                </p>
+                <p>&nbsp;</p>
             </footer>
         </div>
         <?= $this->inlineScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/bootstrap/bootstrap.min.js'))
             ->prependFile($this->basePath('js/jquery-3.5.1.min.js')) ?>
     </body>
+        <script>
+        $("#searchBox").hide();
+
+        $("#filtrar").click(function() {
+                if($("#searchBox").is(":visible")){
+                        $("#searchBox").hide("slow", function() {
+                                //alert("Animation complete.");
+                        });
+                }
+                if($("#searchBox").is(":hidden")){
+                        $("#searchBox").show(1000, function() {
+                                //alert("Animation complete.");
+                        });
+                }
+        });
+
+        $("#closeAlertBox").click(function() {
+                if($("#alertBox").is(":visible")){
+                        $("#alertBox").hide("slow", function() {
+                                //alert("Animation complete.");
+                        });
+                }
+        });
+        </script>
 </html>

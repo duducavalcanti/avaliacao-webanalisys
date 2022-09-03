@@ -48,10 +48,10 @@ class Usuario {
     }
 
     public function getSenha() {
-        return $this->senha;
+        return base64_decode($this->senha);
     }
 
     public function setSenha($senha) {
-        $this->senha = $senha;
+        $this->senha = base64_encode($senha);
     }
 }
