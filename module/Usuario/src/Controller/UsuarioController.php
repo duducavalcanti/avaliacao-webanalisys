@@ -21,12 +21,16 @@ class UsuarioController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel(['usuarios' => $this->tabela->getAll()]);
-    }
-    
-    public function filtarAction()
-    {
-        
+
+        $request = $this->getRequest();
+        $nome = $request->getPost('nome', '0');
+
+        if(($nome === '0') || (empty($nome))){
+            return new ViewModel(['usuarios' => $this->tabela->getAll()]);
+        }
+
+        return new ViewModel(['usuarios' => $this->tabela->getUsuarioFiltro($nome)]);
+                
     }
     
     public function cadastrarAction()

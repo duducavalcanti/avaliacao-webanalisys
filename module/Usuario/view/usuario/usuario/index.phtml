@@ -5,9 +5,8 @@
         <br>
         Total de Registros Encontrados: <?php echo count($usuarios); ?>
 
-
         <!--Alertas-->
-        <div id="alertBoxSucesso" name="alertBoxSucesso" class="row">
+<!--        <div id="alertBoxSucesso" name="alertBoxSucesso" class="row">
                 <div class="col-lg-12">
                         <div class="alert alert-success fade show" role="alert">
                                 <div class="text-end" style="width:100%"><a class="btn btn-success btn-sm" id="closeAlertBoxSucesso" name="closeAlertBoxSucesso"><strong>X</strong></a></div>
@@ -26,12 +25,12 @@
                                 </span>
                         </div>
                 </div>
-        </div>
+        </div>-->
         <!--End Alertas-->
 
         <div id="searchBox" name="searchBox" class="form-group text-end">
                 <p>
-                <form name="formSearch" id="formSearch" method="post" action="" style="display:inline">
+                <form name="formSearch" id="formSearch" method="post" action="<?php echo $this->url('usuario', ['action'=>'index']); ?>" style="display:inline">
 
                         <div class="input-group">
                                 <span style="width:15%" class="input-group-text">Nome</span>
@@ -88,6 +87,7 @@
         </table>
 
         <div class="d-flex justify-content-center">
-    <!--            paginação-->
+        <!-- paginação-->
         </div>
+        
     </div>

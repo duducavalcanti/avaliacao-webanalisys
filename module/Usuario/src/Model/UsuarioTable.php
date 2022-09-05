@@ -2,6 +2,7 @@
 namespace Usuario\Model;
 
 use Laminas\Db\TableGateway\TableGatewayInterface;
+use Laminas\Db\Sql\Where;
 use RuntimeException;
 
 class UsuarioTable {
@@ -26,6 +27,15 @@ class UsuarioTable {
         return $row;
     }
 
+    public function getUsuarioFiltro($nome){
+        $where = new Where();
+        $rowset = $this->tableGateway->select($where->like('nome', '%'.$nome.'%'));
+        if(!$rowset){
+            throw new RuntimeException(sprintf('Não foi encontrado nenhum registro com o nome: %d', $nome));
+        }
+        return $rowset;
+    }
+    
     public function saveUsuario(Usuario $usuario){
         $data = [
             'nome' => $usuario->getNome(),
