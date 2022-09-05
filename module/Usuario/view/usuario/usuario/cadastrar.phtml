@@ -1,0 +1,62 @@
+    <br>
+    <div class="col-11 m-auto">
+        <p class="fs-3">Casatrar Alunos</p>
+
+        <?php
+        $form->setAttribute('action', $this->url('usuario', ['action'=>'cadastrar']))
+        ->setAttribute('name', 'formCad')
+        ->setAttribute('id', 'formCad')
+        ->setAttribute('method', 'post');
+        $form->prepare();
+        ?>
+
+        <?php
+        echo $this->form()->openTag($form);
+        ?>
+
+        <div class="input-group">
+            <?php
+            echo $this->formElement($form->get('id'));
+            ?>
+        </div>
+
+        <div class="input-group">
+            <span style="width:7%" class="input-group-text">Nome</span>
+            <?php
+            echo $this->formElement($form->get('nome'));
+            ?>
+        </div> 
+
+        <div class="input-group">
+            <span style="width:7%" class="input-group-text">Email</span>
+            <?php
+            echo $this->formElement($form->get('email'));
+            ?>
+        </div> 
+
+        <div class="input-group">
+            <span style="width:7%" class="input-group-text">Senha</span>
+            <?php
+            echo $this->formElement($form->get('senha'));
+            ?>
+        </div>    
+        
+        <br>
+        
+        <div class="panel-footer row text-right">
+            <div class="form-group">
+                <div class="col-lg-12">            
+                    <a class="btn btn-danger" value="Voltar" href="<?php echo $this->url('usuario'); ?>">Voltar</a>
+                    
+                    
+                    
+                    <a class="btn btn-success" value="Cadastrar" onclick="document.getElementById('formCad').submit();">Cadastrar</a>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        echo $this->form()->closeTag();
+        ?>
+
+</div>

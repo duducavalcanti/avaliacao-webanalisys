@@ -1,0 +1,21 @@
+    <br>
+    
+    <div class="col-11 m-auto">
+        
+        <p class="fs-3">Deletar Aluno</p>
+        
+        Você deseja realmente excluir <?php echo $this->escapeHtml($usuario->getNome()); ?>?
+        
+        <p>
+        
+        <form name="formDelete" id="formDelete" method="post" action="<?php echo $this->url('usuario', ['action' => 'deletar', 'id' => $usuario->getId()]); ?>">
+            
+            <input type="hidden" id="id" name="id" value="<?php echo $usuario->getId(); ?>">
+            <input type="submit" id="del" name="del" class="btn btn-danger" onclick="document.getElementById('formDelete').submit();" value="Sim">
+            <input type="submit" id="del" name="del" class="btn btn-primary" onclick="document.getElementById('formDelete').submit();" value="Não">
+        
+        </form> 
+        
+        </p>
+        
+    </div>

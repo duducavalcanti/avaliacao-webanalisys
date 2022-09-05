@@ -2,33 +2,33 @@
 
 namespace Usuario\Model;
 
-class Usuario {
+class Usuario implements \Laminas\Stdlib\ArraySerializableInterface {
 
-    private $id_usuario;
+    private $id;
     private $nome;
     private $email;
     private $senha;
     
-    function __construct($id_usuario = null, $nome = null,  $email = null, $senha = null) {
-        $this->id_usuario = $id_usuario;
+    function __construct($id = null, $nome = null,  $email = null, $senha = null) {
+        $this->id = $id;
         $this->nome = $nome;
         $this->email = $email;
         $this->senha = $senha;
     }
 
     public function exchangeArray(array $data) {
-        $this->id_usuario((empty($data['id_usuario'])) ? $data['id_usuario'] : null);
-        $this->nome((empty($data['nome'])) ? $data['nome'] : null);
-        $this->email((empty($data['email'])) ? $data['email'] : null);
-        $this->senha((empty($data['senha'])) ? $data['senha'] : null);
+        $this->id = !empty($data['id']) ? $data['id'] : null;
+        $this->nome = !empty($data['nome']) ? $data['nome'] : null;
+        $this->email = !empty($data['email']) ? $data['email'] : null;
+        $this->senha = !empty($data['senha']) ? $data['senha'] : null;
     }
 
-    public function getId_usuario() {
-        return $this->id_usuario;
+    public function getId() {
+        return $this->id;
     }
 
-    public function setId_usuario($id_usuario) {
-        $this->id_usuario = $id_usuario;
+    public function setId($id) {
+        $this->id = $id;
     }
 
     public function getNome() {
@@ -48,10 +48,20 @@ class Usuario {
     }
 
     public function getSenha() {
-        return base64_decode($this->senha);
+        return $this->senha;
     }
 
     public function setSenha($senha) {
-        $this->senha = base64_encode($senha);
+        $this->senha = $senha;
     }
+
+    public function getArrayCopy(): array {
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'senha' => $this->senha,
+        ];
+    }
+
 }

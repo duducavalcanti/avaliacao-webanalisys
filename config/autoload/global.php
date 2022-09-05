@@ -13,5 +13,13 @@
  */
 
 return [
-    // ...
+    'db' => [
+    'driver' => 'Pdo_Mysql',
+    'database' => 'avaliacao',
+    'username' => 'admin',
+    'password' => '#$enha123#',
+    'hostname' => 'localhost',
+    'port' => '3306',
+    'charset' => 'utf8',
+    ],
 ];

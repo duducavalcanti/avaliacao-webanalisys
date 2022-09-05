@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Usuario;
 
 use Laminas\Router\Http\Segment;
-use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -16,7 +15,7 @@ return [
                     'route'    => '/usuario[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9a-zA-Z=]+',
+                        'id' => '[0-9]+',
                     ],
                     'defaults' => [
                         'controller'  => Controller\UsuarioController::class,
@@ -24,11 +23,6 @@ return [
                     ],
                 ],
             ],
-        ],
-    ],
-    'controllers' => [
-        'factories' => [
-            Controller\UsuarioController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
@@ -39,12 +33,12 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'usuario/index/index' => __DIR__ . '/../view/usuario/index/index.phtml',
+            'usuario/usuario/index' => __DIR__ . '/../view/usuario/usuario/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
-            __DIR__ . '/../view',
+            'usuario' => __DIR__ . '/../view',
         ],
     ],
 ];

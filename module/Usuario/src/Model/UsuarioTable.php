@@ -18,14 +18,14 @@ class UsuarioTable {
     
     public function getUsuario($id){
         $id = (int) $id;
-        $rowSet = $this->tableGateway->select(['id_usuario' => $id]);
+        $rowSet = $this->tableGateway->select(['id' => $id]);
         $row = $rowSet->current();
-        if(!row){
+        if(!$row){
             throw new RuntimeException(sprintf('Não foi encontrado nenhum registro com o ID: %d', $id));
         }
         return $row;
     }
-    
+
     public function saveUsuario(Usuario $usuario){
         $data = [
             'nome' => $usuario->getNome(),
@@ -33,18 +33,25 @@ class UsuarioTable {
             'senha' => $usuario->getSenha(),
         ];
         
-        $id = (int) $usuario->getId_usuario();
+        $id = (int) $usuario->getId();
         
         if($id === 0){
             $this->tableGateway->insert($data);
             return;
         }
         
-        $this->tableGateway->update($data, ['id_usuario' => $id]);
+        try {
+            $this->getUsuario($id);
+        } catch (RuntimeException $e) {
+            throw new RuntimeException(sprintf(
+                'Não é possível atualizar o usuário com o ID %d;, pois ele não existe no banco', $id));
+        }
+        
+        $this->tableGateway->update($data, ['id' => $id]);
     }
     
-     public function deleteUsuario($id){
-         $this->tableGateway->delete(['id_usuario' => (int) $id]);
-     }
+    public function deleteUsuario($id){
+        $this->tableGateway->delete(['id' => (int) $id]);
+    }
     
 }
